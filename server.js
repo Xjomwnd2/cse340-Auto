@@ -11,6 +11,9 @@ const app = express();
 const static = require("./routes/static");
 const expressLayouts = require("express-ejs-layouts");
 const baseController = require("./controllers/baseController");
+
+
+
 /* ***********************
  * View Engine and Templates
  *************************/
