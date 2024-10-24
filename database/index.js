@@ -5,7 +5,7 @@
  * If - else will make determination which to use
  * *************** */
 const { Pool } = require('pg');
-require("dotenv").config()
+require("dotenv").config();
 
 let pool;
 
