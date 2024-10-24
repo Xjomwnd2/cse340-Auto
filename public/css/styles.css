@@ -4,3 +4,102 @@
 *:after {
   box-sizing: border-box;
 }
+
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  margin: auto;
+  overflow: hidden;
+}
+
+/* Header */
+header {
+  background: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+/* Navigation */
+nav {
+  margin: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+/* Main Content */
+main {
+  padding: 20px;
+  background: white;
+  border-radius: 5px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 10px 0;
+  background: #333;
+  color: #fff;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Small Devices (Mobile) */
+@media (max-width: 600px) {
+  nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+  
+  main {
+    padding: 15px;
+  }
+}
+
+/* Medium Devices (Tablets) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  header {
+    padding: 15px 0;
+  }
+
+  nav ul li {
+    margin: 0 20px;
+  }
+
+  main {
+    padding: 20px;
+  }
+}
+
+/* Large Devices (Desktops) */
+@media (min-width: 1025px) {
+  header {
+    padding: 20px 0;
+  }
+
+  nav ul li {
+    margin: 0 30px;
+  }
+
+  main {
+    padding: 30px;
+  }
+}
