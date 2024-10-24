@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === "development") {
       } catch (error) {
         console.error("error in query", { text });
         throw error;
-      }
+      };
     },
   };
 
@@ -36,4 +36,4 @@ if (process.env.NODE_ENV === "development") {
     connectionString: process.env.DATABASE_URL,
   });
   module.exports = pool;
-}
+};
