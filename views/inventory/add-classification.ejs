@@ -1,0 +1,39 @@
+<!-- views/inventory/add-classification.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Classification</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <h1>Add New Classification</h1>
+    <form id="classificationForm" action="/api/inventory/classifications" method="POST" onsubmit="return validateForm()">
+        <label for="classificationName">Classification Name:</label>
+        <input type="text" id="classificationName" name="classificationName" required>
+        <span id="error-message" style="color: red;"></span>
+
+        <button type="submit">Add Classification</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            const classificationName = document.getElementById('classificationName').value;
+            const errorMessage = document.getElementById('error-message');
+
+            // Regular expression to check for spaces or special characters
+            const regex = /^[a-zA-Z0-9]+$/; // Only allows letters and numbers
+
+            if (!regex.test(classificationName)) {
+                errorMessage.textContent = 'Classification name cannot contain spaces or special characters.';
+                return false; // Prevent form submission
+            }
+
+            errorMessage.textContent = ''; // Clear any previous error messages
+            return true; // Allow form submission
+        }
+    </script>
+</body>
+</html>
