@@ -11,11 +11,14 @@ const app = express();
 const static = require("./routes/static");
 const expressLayouts = require("express-ejs-layouts");
 const baseController = require("./controllers/baseController");
-const inventoryRoute = require('./routes/inventory');
+const inventoryRoutes = require('./routes/inventoryRoutes');
 const authorizeAdminOrEmployee = require('./middleware/authMiddleware');
 const authMiddleware = require('./middleware/authMiddleware');
 const session = require('express-session'); 
 const cookieParser = require("cookie-parser");
+const router = express.Router();
+const bodyParser = require('body-parser');
+
 
 
 
