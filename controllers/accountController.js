@@ -1,8 +1,8 @@
 /* ****************************************
 *  Deliver login view
 * *************************************** */
-const jwt = require("jsonwebtoken")
-require("dotenv").config()
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 async function buildLogin(req, res, next) {
     let nav = await utilities.getNav()
@@ -10,6 +10,6 @@ async function buildLogin(req, res, next) {
       title: "Login",
       nav,
     })
-  }
+  };
   
-  module.exports = { buildLogin }
+  module.exports = { buildLogin };
