@@ -1,30 +1,26 @@
-// middleware/authMiddleware.js
+const jwt = require('jsonwebtoken');
+const secret = process.env.JWT_SECRET;
 
-// Sample authentication middleware
+// Middleware for checking if user is authenticated
 const authMiddleware = (req, res, next) => {
-    // Check if the user is authenticated
-    const authHeader = req.headers.authorization;
-
-    if (!authHeader) {
-        // If there's no authorization header, return a 401 Unauthorized response
-        return res.status(401).json({ message: 'Unauthorized: No token provided' });
-    }
-
-    const token = authHeader.split(' ')[1]; // Assuming the token is in "Bearer <token>" format
-
-    try {
-        // Verify token logic here (e.g., using JWT)
-        // const decoded = jwt.verify(token, 'your-secret-key');
+    const token = req.cookies.token;
+    if (!token) return res.redirect('/login?error=Please log in first');
+    
+    jwt.verify(token, secret, (err, decoded) => {
+        if (err) return res.redirect('/login?error=Invalid session');
         
-        // Attach user info from token to request object for use in other routes
-        // req.user = decoded;
-        
-        // For now, just passing through (replace with actual logic)
+        req.user = decoded; // Attach user info to request
+        res.locals.user = decoded; // Attach to locals for access in views
         next();
-    } catch (err) {
-        // Token is invalid or has expired
-        return res.status(401).json({ message: 'Unauthorized: Invalid token' });
-    }
+    });
 };
 
-module.exports = authMiddleware;
+// Middleware for checking user role for restricted routes
+const roleCheckMiddleware = (req, res, next) => {
+    if (req.user.role !== 'Employee' && req.user.role !== 'Admin') {
+        return res.redirect('/login?error=Insufficient privileges');
+    }
+    next();
+};
+
+module.exports = { authMiddleware, roleCheckMiddleware };
