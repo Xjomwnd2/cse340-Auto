@@ -78,17 +78,7 @@ app.use(session({
 // app.set('view engine', 'ejs'); // Example for EJS
 
 // Other routes can go here
-const fs = require('fs');
-const path = require('path');
 
-const routesDir = path.join(__dirname, 'routes');
-fs.readdir(routesDir, (err, files) => {
-    if (err) {
-        console.error('Error reading routes directory:', err);
-    } else {
-        console.log('Files in routes directory:', files);
-    }
-});
 // Error handling middleware (optional)
 app.use((err, req, res, next) => {
   console.error(err.stack);
