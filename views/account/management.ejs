@@ -1,0 +1,9 @@
+<form action="/update-inventory" method="post">
+    <!-- other form inputs here -->
+
+    <input type="submit" value="Submit">
+    
+    <input type="hidden" name="inv_id"
+    <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+    <% } %>>
+</form>
