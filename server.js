@@ -20,9 +20,6 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 
 
-
-
-
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -66,10 +63,9 @@ router.delete('/delete-classification/:id', authorizeAdminOrEmployee, (req, res)
   // Logic to delete classification
 });
 /* *************************************
-*
+* Middleware setup
 *********************************** */
 
-// Middleware setup
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
