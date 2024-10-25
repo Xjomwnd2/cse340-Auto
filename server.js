@@ -11,7 +11,9 @@ const app = express();
 const static = require("./routes/static");
 const expressLayouts = require("express-ejs-layouts");
 const baseController = require("./controllers/baseController");
-const inventoryRoute = require('./routes/inventory'); 
+const inventoryRoute = require('./routes/inventory');
+const authorizeAdminOrEmployee = require('./middleware/authMiddleware');
+const session = require('express-session'); 
 
 
 
@@ -33,6 +35,47 @@ app.use(static)
 app.get("/", baseController.buildHome);
 // Inventory routes
 app.use("/inv", inventoryRoute);
+/* **********************************
+* Use Middleware in Your Routes
+********************************** */
+// Routes that require admin or employee access
+router.post('/add-classification', authorizeAdminOrEmployee, (req, res) => {
+  // Logic to add classification
+});
+
+router.put('/edit-classification/:id', authorizeAdminOrEmployee, (req, res) => {
+  // Logic to edit classification
+});
+
+router.delete('/delete-classification/:id', authorizeAdminOrEmployee, (req, res) => {
+  // Logic to delete classification
+});
+/* *************************************
+*
+*********************************** */
+
+// Middleware setup
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+  secret: 'your_secret_key', // Replace with your secret
+  resave: false,
+  saveUninitialized: true,
+}));
+
+// Set up view engine if using one (like EJS, Pug, etc.)
+// app.set('view engine', 'ejs'); // Example for EJS
+
+// Use the inventory routes
+app.use('/inventory', inventoryRoutes); // Prefix routes with /inventory
+
+// Other routes can go here
+
+// Error handling middleware (optional)
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
+});
 
 
 /* ***********************
