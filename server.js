@@ -14,6 +14,7 @@ const baseController = require("./controllers/baseController");
 const inventoryRoute = require('./routes/inventory');
 const authorizeAdminOrEmployee = require('./middleware/authMiddleware');
 const session = require('express-session'); 
+const cookieParser = require("cookie-parser");
 
 
 
@@ -23,8 +24,14 @@ const session = require('express-session');
  *************************/
 
 app.set("view engine", "ejs");
+app.set("layout", "./layouts/layout");
+
+/* ***********************
+ * Use statements
+ *************************/
+
 app.use(expressLayouts);
-app.set("layout", "./layouts/layout"); // 
+app.use(cookieParser())
 
 /* ***********************
  * Routes
