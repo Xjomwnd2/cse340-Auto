@@ -2,6 +2,8 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const accountRoutes = require('./routes/accountRoutes');
 const db = require('./models/database'); // Hypothetical database module
+const jwt = require('jsonwebtoken');
+const secret = process.env.JWT_SECRET;
 
 const app = express();
 const PORT = process.env.PORT || 3000;
