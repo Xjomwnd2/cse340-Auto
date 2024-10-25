@@ -71,7 +71,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
   secret: 'your_secret_key', // Replace with your secret
-  resave: false,
+  save: false,
   saveUninitialized: true,
 }));
 
