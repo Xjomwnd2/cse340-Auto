@@ -4,7 +4,7 @@ const accountController = require('../controllers/accountController');
 const utilities = require('../utilities');
 
 // Route to deliver the login view (GET /login)
-router.get('/login', (req, res, next) => {
+router.get('/utilities.checkLogin', (req, res, next) => {
   try {
     accountController.buildLogin(req, res);
   } catch (error) {
