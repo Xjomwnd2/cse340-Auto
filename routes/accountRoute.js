@@ -4,14 +4,13 @@ const accountController = require('../controllers/accountController');
 const utilities = require('../utilities');
 
 // Route to deliver the login view (GET /login)
-router.get('/utilities.checkLogin', (req, res, next) => {
+router.get('/login', (req, res, next) => {
   try {
     accountController.buildLogin(req, res);
   } catch (error) {
     next(error);
   }
 });
-
 // Process the login request (POST /login)
 router.post('/login', (req, res, next) => {
   try {
@@ -20,5 +19,7 @@ router.post('/login', (req, res, next) => {
     next(error);
   }
 });
+
+router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildManagement));
 
 module.exports = router;
