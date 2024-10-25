@@ -15,5 +15,12 @@ router.post('/account/updateInfo', authMiddleware, accountController.updateAccou
 // Route to handle password change
 router.post('/account/updatePassword', authMiddleware, accountController.updatePassword);
 
+// Define some routes
+router.get('/account', (req, res) => {
+  res.send('Account management page');
+});
+
+// Export the router
+
 // Export the router
 module.exports = router;
