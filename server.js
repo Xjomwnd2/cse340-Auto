@@ -77,9 +77,6 @@ app.use(session({
 // Set up view engine if using one (like EJS, Pug, etc.)
 // app.set('view engine', 'ejs'); // Example for EJS
 
-// Use the inventory routes
-app.use('/inventory', inventoryRoutes); // Prefix routes with /inventory
-
 // Other routes can go here
 const fs = require('fs');
 const path = require('path');
