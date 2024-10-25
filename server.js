@@ -78,7 +78,8 @@ app.use(session({
 // app.set('view engine', 'ejs'); // Example for EJS
 
 // Other routes can go here
-
+// Use the inventory routes
+app.use('/inventory', inventoryRoutes);
 // Error handling middleware (optional)
 app.use((err, req, res, next) => {
   console.error(err.stack);
