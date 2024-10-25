@@ -2,7 +2,8 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const accountRoutes = require('./routes/accountRoutes');
 const db = require('./models/database'); // Hypothetical database module
-
+const token = require('./jwt/token.js');
+const middleware = require('./middleware/middleware.js')
 
 const app = express();
 const PORT = process.env.PORT || 3000;
