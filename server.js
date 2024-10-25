@@ -13,6 +13,7 @@ const expressLayouts = require("express-ejs-layouts");
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require('./routes/inventory');
 const authorizeAdminOrEmployee = require('./middleware/authMiddleware');
+const authMiddleware = require('./middleware/authMiddleware');
 const session = require('express-session'); 
 const cookieParser = require("cookie-parser");
 
@@ -31,7 +32,11 @@ app.set("layout", "./layouts/layout");
  *************************/
 
 app.use(expressLayouts);
-app.use(cookieParser())
+app.use(cookieParser());
+// Use the middleware for protected routes
+app.use('/protected-route', authMiddleware, (req, res) => {
+  res.send('This is a protected route');
+});
 
 /* ***********************
  * Routes
