@@ -49,15 +49,11 @@ app.use(session({
 // Static Routes
 app.use(staticRoutes);
 
-
-
 // Index route
 app.get("/", baseController.buildHome);
 
 // Inventory routes
 app.use('/inventory', inventoryRoutes);
-
-
 
 /* **********************************
  * Error Handling Middleware
