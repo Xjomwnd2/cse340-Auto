@@ -17,8 +17,7 @@ const app = express();
 const staticRoutes = require("./routes/static");
 const baseController = require("./controllers/baseController");
 const inventoryRoutes = require('./routes/inventoryRoutes');
-const authMiddleware = require('./middleware/authMiddleware');
-const authorizeAdminOrEmployee = require('./middleware/authMiddleware'); // Only if these are different
+const { authMiddleware, authorizeAdminOrEmployee } = require('./middleware/authMiddleware'); // Import both middleware functions
 const db = require('./database'); // Assuming db connects upon import
 
 /* ***********************
