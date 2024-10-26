@@ -55,7 +55,7 @@ app.use(session({
     maxAge: 1000 * 60 * 60 * 24, // 24 hours
     sameSite: 'strict'
   },
-}))
+}));
 
 /* ******************************************
  * Static Files Configuration
@@ -103,3 +103,8 @@ app.listen(PORT, () => {
 
 // Export for testing purposes
 module.exports = app;
+
+module.exports = {
+  authMiddleware,
+  authorizeAdminOrEmployee,
+};
