@@ -64,7 +64,7 @@ app.use('/inventory', inventoryRoutes);
  * Admin/Employee Protected Routes
  ********************************** */
 app.post('/add-classification', authorizeAdminOrEmployee, (req, res) => {
-  // Logic to add classification
+  // Logic here
 });
 
 app.put('/edit-classification/:id', authorizeAdminOrEmployee, (req, res) => {
