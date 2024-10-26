@@ -49,10 +49,7 @@ app.use(session({
 // Static Routes
 app.use(staticRoutes);
 
-// Example Protected Route
-app.use('./protected-route', authMiddleware, (req, res) => {
-  res.send('This is a protected route');
-});
+
 
 // Index route
 app.get("/", baseController.buildHome);
