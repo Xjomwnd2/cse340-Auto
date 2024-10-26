@@ -57,20 +57,7 @@ app.get("/", baseController.buildHome);
 // Inventory routes
 app.use('/inventory', inventoryRoutes);
 
-/* **********************************
- * Admin/Employee Protected Routes
- ********************************** */
-app.post('/add-classification', authorizeAdminOrEmployee, (req, res) => {
-  // Logic here
-});
 
-app.put('/edit-classification/:id', authorizeAdminOrEmployee, (req, res) => {
-  // Logic to edit classification
-});
-
-app.delete('/delete-classification/:id', authorizeAdminOrEmployee, (req, res) => {
-  // Logic to delete classification
-});
 
 /* **********************************
  * Error Handling Middleware
