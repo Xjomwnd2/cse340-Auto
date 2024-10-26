@@ -50,7 +50,7 @@ app.use(session({
 app.use(staticRoutes);
 
 // Example Protected Route
-app.use('/protected-route', authMiddleware, (req, res) => {
+app.use('./protected-route', authMiddleware, (req, res) => {
   res.send('This is a protected route');
 });
 
