@@ -24,3 +24,6 @@ const roleCheckMiddleware = (req, res, next) => {
 };
 
 module.exports = { authMiddleware, roleCheckMiddleware };
+
+console.log('authMiddleware:', authMiddleware);
+console.log('authorizeAdminOrEmployee:', authorizeAdminOrEmployee);
