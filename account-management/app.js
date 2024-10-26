@@ -89,8 +89,8 @@ app.use((err, req, res, next) => {
     title: '500 - Server Error',
     message: err.message || 'Internal Server Error'
   });
-})
-;
+});
+
 /* ******************************************
  * Server Startup
  ****************************************** */
