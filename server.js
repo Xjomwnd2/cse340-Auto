@@ -58,12 +58,12 @@ app.use('./protected-route', authMiddleware, (req, res) => {
 app.get("/", baseController.buildHome);
 
 // Inventory routes
-app.use('./inventory', inventoryRoutes);
+app.use('/inventory', inventoryRoutes);
 
 /* **********************************
  * Admin/Employee Protected Routes
  ********************************** */
-app.post('./add-classification', authorizeAdminOrEmployee, (req, res) => {
+app.post('/add-classification', authorizeAdminOrEmployee, (req, res) => {
   // Logic here
 });
 
