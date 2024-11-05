@@ -3,11 +3,9 @@ const pool = require("../database/")
 /* ***************************
  *  Get all classification data
  * ************************** */
-async function getClassifications(){
+async function getClassifications() {
   return await pool.query("SELECT * FROM public.classification ORDER BY classification_name")
 }
-
-module.exports = {getClassifications};
 
 /* ***************************
  *  Get all inventory items and classification_name by classification_id
@@ -23,8 +21,9 @@ async function getInventoryByClassificationId(classification_id) {
     )
     return data.rows
   } catch (error) {
-    console.error("getClassificationsById error:", error);
+    console.error("getInventoryByClassificationId error:", error);
   }
-};
+}
 
-module.exports = {getClassifications, getInventoryByClassificationId};
+// Export both functions in a single statement
+module.exports = { getClassifications, getInventoryByClassificationId };
