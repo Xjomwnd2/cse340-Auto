@@ -34,9 +34,43 @@ app.use(expressLayouts);
 app.use(cookieParser());
 app.use('/inventory', inventoryRoutes);
 app.use('/', homeRoutes);
+/* ****************************************
+*POOL
+****************************************** */
+/////////////////////////////////////////////
+const { Pool } = require('pg');
 
+// 1. Check the PostgreSQL server status
+// Ensure the PostgreSQL server is running and accepting connections
+// You can use a tool like pgAdmin or the psql command-line client to verify the connection
 
+// 2. Verify the database connection details
+const pool = new Pool({
+  host: 'localhost',
+  port: 5432,
+  user: 'your_username',
+  password: 'your_password',
+  database: 'your_database_name'
+});
 
+// 3. Inspect the database pool configuration
+// Review the pool configuration to ensure it is set up correctly
+// Adjust the maximum number of connections, connection timeout, and other relevant settings as needed
+pool.connect((err, client, release) => {
+  if (err) {
+    console.error('Error acquiring client', err.stack);
+    return;
+  }
+  client.query('SELECT * FROM your_table', (err, result) => {
+    release();
+    if (err) {
+      console.error('Error executing query', err.stack);
+      return;
+    }
+    console.log(result.rows);
+  });
+});
+//////////////////////////////////////////
 // Configure session management with more secure settings
 app.use(session({
   secret: process.env.SESSION_SECRET || 'your_secret_key', // Better to use environment variable
