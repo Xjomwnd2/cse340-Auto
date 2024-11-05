@@ -12,7 +12,6 @@ const inventoryRoutes = require('./routes/inventory');
 const app = express();
 const staticRoutes = require("./routes/static");
 const baseController = require("./controllers/baseController");
-const inventoryRoutes = require('./routes/inventoryRoutes');
 // Fix: Import authMiddleware once and use it for both purposes
 const { authMiddleware, authorizeAdminOrEmployee } = require('./middleware/authMiddleware');
 const db = require('./database');
