@@ -9,6 +9,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require('body-parser');
 const inventoryRoutes = require('./routes/inventory');
 const homeRoutes = require('./routes/homeRoutes');
+const pool = require('./config/db'); 
 
 const app = express();
 const staticRoutes = require("./routes/static");
@@ -16,6 +17,16 @@ const baseController = require("./controllers/baseController");
 // Fix: Import authMiddleware once and use it for both purposes
 const { authMiddleware, authorizeAdminOrEmployee } = require('./middleware/authMiddleware');
 const db = require('./database');
+
+// Example query
+pool.query('SELECT * FROM your_table', (error, results) => {
+  if (error) {
+    console.error('Database query error:', error);
+  } else {
+    console.log('Query results:', results.rows);
+  }
+});
+
 
 /* ***********************
  * View Engine and Templates
