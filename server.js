@@ -17,7 +17,7 @@ const baseController = require("./controllers/baseController");
 // Fix: Import authMiddleware once and use it for both purposes
 const { authMiddleware, authorizeAdminOrEmployee } = require('./middleware/authMiddleware');
 const db = require('./database');
-const pool = require('./config/db'); // Import the pool from db.js
+const pool = require('./db'); // Import the pool from db.js
 
 
 // Example query
