@@ -63,16 +63,7 @@ const pool = new Pool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
 });
-// Adjust the maximum number of connections, connection timeout, and other relevant settings as needed
-try {
-  const client = await pool.connect();
-  const result = await client.query('SELECT * FROM your_table');
-  console.log(result.rows);
-  client.release();
-} catch (err) {
-  console.error('Error executing query:', err);
-  return;
-}
+
 // 3. Inspect the database pool configuration
 // Review the pool configuration to ensure it is set up correctly
 // Adjust the maximum number of connections, connection timeout, and other relevant settings as needed
