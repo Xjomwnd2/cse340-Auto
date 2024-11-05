@@ -1,0 +1,7 @@
+<h1>Inventory List</h1>
+<ul>
+    <% items.forEach(item => { %>
+        <li><%= item.name %> - $<%= item.price %> - Quantity: <%= item.quantity %></li>
+    <% }) %>
+</ul>
+<a href="/inventory/add">Add New Item</a>
