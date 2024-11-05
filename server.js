@@ -40,21 +40,6 @@ app.use('/', homeRoutes);
 /////////////////////////////////////////////
 const { Pool } = require('pg');
 
-// 1. Check the PostgreSQL server status
-// Ensure the PostgreSQL server is running and accepting connections
-// You can use a tool like pgAdmin or the psql command-line client to verify the connection
-// 1. Check the PostgreSQL server status
-// Ensure the PostgreSQL server is running and accepting connections
-// You can use a tool like pgAdmin or the psql command-line client to verify the connection
-try {
-  const client = await pool.connect();
-  const result = await client.query('SELECT 1');
-  console.log('PostgreSQL server is running and accepting connections.');
-  client.release();
-} catch (err) {
-  console.error('Error connecting to PostgreSQL server:', err);
-  return;
-}
 // 2. Verify the database connection details
 const pool = new Pool({
   host: 'localhost',
