@@ -9,8 +9,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require('body-parser');
 const inventoryRoutes = require('./routes/inventory');
 const homeRoutes = require('./routes/homeRoutes');
-// server.js or route file
-const pool = require('./config/db'); // Adjust the path as needed
+const pool = require('./db');
 
 
 const app = express();
