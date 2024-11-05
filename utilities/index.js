@@ -4,7 +4,7 @@ const Util = {};
 /* ************************
  * Constructs the nav HTML unordered list
  ************************** */
-Util.getNav = async function (req, res, next) {
+Util.getNav = async function () {  // Removed req, res, next parameters since it’s a utility
   try {
     let data = await invModel.getClassifications();
     let list = "<ul>";
@@ -25,21 +25,21 @@ Util.getNav = async function (req, res, next) {
     return list;
   } catch (error) {
     console.error("Error generating navigation:", error);
-    next(error);  // Pass the error to Express's error handler
+    throw error;  // Throw error instead of calling next
   }
 };
 
 /* **************************************
-* Build the classification view HTML
-* ************************************ */
+ * Build the classification view HTML
+ ************************************** */
 Util.buildClassificationGrid = async function(data) {
   let grid = '';  // Ensure grid is initialized to avoid errors
-  if(data.length > 0){
+  if (data.length > 0) {
     grid = '<ul id="inv-display">';
     data.forEach(vehicle => { 
       grid += '<li>';
       grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
-        + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
+        + '" title="View ' + vehicle.inv_make + ' ' + vehicle.inv_model 
         + ' details"><img src="' + vehicle.inv_thumbnail 
         + '" alt="Image of ' + vehicle.inv_make + ' ' + vehicle.inv_model 
         + ' on CSE Motors" /></a>';
@@ -64,7 +64,7 @@ Util.buildClassificationGrid = async function(data) {
 
 /* ****************************************
  *  Check Login
- * ************************************ */
+ **************************************** */
 Util.checkLogin = (req, res, next) => {
   if (res.locals.loggedin) {
     next();
