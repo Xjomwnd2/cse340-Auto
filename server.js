@@ -18,6 +18,7 @@ const baseController = require("./controllers/baseController");
 const { authMiddleware, authorizeAdminOrEmployee } = require('./middleware/authMiddleware');
 const db = require('./database');
 const { Pool } = require('pg');
+const pool = require('./config/db'); // Import the pool from db.js
 
 
 // Example query
