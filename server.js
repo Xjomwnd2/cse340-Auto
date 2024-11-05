@@ -8,6 +8,7 @@ const session = require('express-session');
 const cookieParser = require("cookie-parser");
 const bodyParser = require('body-parser');
 const inventoryRoutes = require('./routes/inventory');
+const homeRoutes = require('./routes/homeRoutes');
 
 const app = express();
 const staticRoutes = require("./routes/static");
@@ -30,6 +31,8 @@ app.use(express.urlencoded({ extended: true })); // Use this instead of bodyPars
 app.use(expressLayouts);
 app.use(cookieParser());
 app.use('/inventory', inventoryRoutes);
+app.use('/', homeRoutes);
+
 
 
 // Configure session management with more secure settings
