@@ -38,34 +38,7 @@ app.use('/', homeRoutes);
 *POOL
 ****************************************** */
 /////////////////////////////////////////////
-const { Pool } = require('pg');
 
-// 2. Verify the database connection details
-const pool = new Pool({
-  host: process.env.DB_HOST || '127.0.0.1',
-  port: process.env.DB_PORT || 5432,
-  user: process.env.DB_USER || 'cse340',
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
-
-// 3. Inspect the database pool configuration
-// Review the pool configuration to ensure it is set up correctly
-// Adjust the maximum number of connections, connection timeout, and other relevant settings as needed
-pool.connect((err, client, release) => {
-  if (err) {
-    console.error('Error acquiring client', err.stack);
-    return;
-  }
-  client.query('SELECT * FROM your_table', (err, result) => {
-    release();
-    if (err) {
-      console.error('Error executing query', err.stack);
-      return;
-    }
-    console.log(result.rows);
-  });
-});
 //////////////////////////////////////////
 // Configure session management with more secure settings
 app.use(session({
