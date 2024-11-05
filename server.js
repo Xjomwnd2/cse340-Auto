@@ -48,9 +48,9 @@ const { Pool } = require('pg');
 const pool = new Pool({
   host: 'localhost',
   port: 5432,
-  user: 'your_username',
-  password: 'your_password',
-  database: 'your_database_name'
+  user: process.env.DB_USER || 'cse340',
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
 // 3. Inspect the database pool configuration
