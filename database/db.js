@@ -1,15 +1,16 @@
-const { Pool } = require('pg');
+// config/db.js
 
-// Configure the pool with your database connection details
+const { Pool } = require('pg');
+require('dotenv').config();
+
 const pool = new Pool({
-  host: '127.0.0.1',
-  port: 5432,
-  user: 'cse340mn_stxh',    // Replace with your PostgreSQL username
-  password: 'https://api.render.com/deploy/srv-csei81lsvqrc73f46uv0?key=zrqNkhKYUYY', // Replace with your PostgreSQL password
-  database: 'cse340mn_stxh', // Replace with your database name
-  max: 10,                   // Optional: Max number of connections
-  idleTimeoutMillis: 30000,  // Optional: Idle timeout for connections
+  host: process.env.DB_HOST || '127.0.0.1',
+  port: process.env.DB_PORT || 5432,
+  user: process.env.DB_USER || 'cse340',
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  max: 10,
+  idleTimeoutMillis: 30000,
 });
 
-// Export the pool to use it in other parts of your app
 module.exports = pool;
