@@ -9,7 +9,6 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require('body-parser');
 const inventoryRoutes = require('./routes/inventory');
 const homeRoutes = require('./routes/homeRoutes');
-const pool = require('./config/db'); 
 
 const app = express();
 const staticRoutes = require("./routes/static");
