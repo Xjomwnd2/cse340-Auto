@@ -76,7 +76,7 @@ app.use((err, req, res, next) => {
 /* ***********************
  * Local Server Information
  *************************/
-const port = process.env.PORT || 5500;
+const port = process.env.PORT || 5432;
 const host = process.env.HOST || 'localhost';
 
 /* ***********************
